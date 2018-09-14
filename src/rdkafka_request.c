@@ -2401,11 +2401,13 @@ static void rd_kafka_handle_Produce (rd_kafka_t *rk,
 
         } else {
                 /* Error handling */
-                struct rd_kafka_Produce_err perr = { err: err,
-                                                     incr_retry: 1,
-                                                     status: status,
-                                                     update_next_ack: rd_true,
-                                                     update_next_err: rd_true };
+                struct rd_kafka_Produce_err perr = {
+                        .err = err,
+                        .incr_retry = 1,
+                        .status = status,
+                        .update_next_ack = rd_true,
+                        .update_next_err = rd_true
+                };
 
                 rd_kafka_handle_Produce_error(rkb, rktp,
                                               reply, request,
